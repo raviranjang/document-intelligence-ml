@@ -23,6 +23,10 @@ document input
 Fine-tuning, LayoutLMv3 extraction, and business validation are intentionally outside that first
 milestone. No model-quality claims are made until a versioned dataset and evaluation report exist.
 
+The pretrained OCR adapter, canonical output contract, locked optional dependencies, execution
+command, and current limitations are documented in
+[`docs/ocr_baseline.md`](docs/ocr_baseline.md).
+
 ## Development setup
 
 The project requires Python 3.11 and [uv](https://docs.astral.sh/uv/). Dependency versions are

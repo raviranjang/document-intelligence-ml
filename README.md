@@ -27,6 +27,10 @@ The pretrained OCR adapter, canonical output contract, locked optional dependenc
 command, and current limitations are documented in
 [`docs/ocr_baseline.md`](docs/ocr_baseline.md).
 
+The metric definitions and lineage-aware report contract are documented in
+[`docs/ocr_evaluation.md`](docs/ocr_evaluation.md). No metric values are reported until an immutable,
+approved evaluation dataset is available.
+
 ## Development setup
 
 The project requires Python 3.11 and [uv](https://docs.astral.sh/uv/). Dependency versions are

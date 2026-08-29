@@ -35,6 +35,11 @@ The deterministic error taxonomy, privacy-preserving aggregate report, and fine-
 gate are documented in [`docs/ocr_error_analysis.md`](docs/ocr_error_analysis.md). The tooling is
 implemented, but an actual baseline report still requires an approved evaluation dataset.
 
+The binary `INVOICE` / `NOT_INVOICE` classifier now has a versioned deterministic baseline,
+canonical output contract, and per-class evaluation report. See
+[`docs/classification_baseline.md`](docs/classification_baseline.md). No classifier quality claim is
+made before evaluation on an approved immutable dataset.
+
 ## Development setup
 
 The project requires Python 3.11 and [uv](https://docs.astral.sh/uv/). Dependency versions are

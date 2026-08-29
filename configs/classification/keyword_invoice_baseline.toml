@@ -1,0 +1,15 @@
+schema_version = "1.0.0"
+
+[classifier]
+model_name = "keyword-invoice-baseline"
+model_version = "1.0.0"
+model_source = "deterministic_rules"
+decision_threshold = 0.3
+invoice_signals = [
+  "invoice",
+  "invoice date",
+  "bill to",
+  "amount due",
+  "subtotal",
+  "tax",
+]

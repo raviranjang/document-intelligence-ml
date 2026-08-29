@@ -30,3 +30,32 @@ files are intentionally not production data.
 Schema validation establishes structural compatibility. Operational dataset validation—such as
 checking duplicate records, artifact availability, checksum integrity, annotation correctness,
 and split leakage—is handled separately and must run before training or evaluation.
+
+## Operational validation
+
+Use `DatasetManifestValidator` before a dataset enters training or evaluation:
+
+```python
+from pathlib import Path
+
+from document_intelligence.data.validation import DatasetManifestValidator
+
+validator = DatasetManifestValidator.from_schema_file(
+    Path("datasets/schemas/dataset-manifest.schema.json")
+)
+manifest = validator.validate_file(
+    Path("controlled-datasets/invoice-ocr/manifest.json"),
+    artifact_root=Path("controlled-datasets/invoice-ocr"),
+)
+```
+
+Local artifact validation rejects absolute paths, remote URIs, path traversal, and Windows-style
+backslashes. Remote object stores should provide an `ArtifactReader` adapter with the same
+`read_bytes(uri)` contract; credentials must remain in the storage client or runtime environment,
+never in a manifest.
+
+Validation fails with an aggregated `DatasetValidationError` containing stable issue codes and
+record locations. It checks schema compatibility, duplicate IDs and artifact references, grouped
+split leakage, missing or unreadable files, empty artifacts, byte sizes, SHA-256 checksums, and
+corrupt or empty JSON annotations. Task-specific labels, bounding boxes, and token alignment must
+be checked by validators tied to their versioned annotation schema.

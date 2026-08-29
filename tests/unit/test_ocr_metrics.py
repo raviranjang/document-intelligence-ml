@@ -10,6 +10,7 @@ from document_intelligence.evaluation.ocr_metrics import (
     evaluate_detection,
     evaluate_recognition,
     intersection_over_union,
+    match_regions,
 )
 
 
@@ -140,6 +141,20 @@ def test_detection_matching_maximizes_valid_one_to_one_pairs() -> None:
     assert metrics.true_positives == 2
     assert metrics.false_positives == 0
     assert metrics.false_negatives == 0
+
+
+def test_region_matching_exposes_assignments_and_unmatched_indices() -> None:
+    reference_boxes = (_box(0, 0, 10, 10), _box(20, 20, 30, 30))
+    predicted_boxes = (_box(0, 0, 10, 10), _box(40, 40, 50, 50))
+
+    matching = match_regions(reference_boxes, predicted_boxes)
+
+    assert len(matching.matches) == 1
+    assert matching.matches[0].reference_index == 0
+    assert matching.matches[0].predicted_index == 0
+    assert matching.matches[0].intersection_over_union == 1.0
+    assert matching.unmatched_reference_indices == (1,)
+    assert matching.unmatched_predicted_indices == (1,)
 
 
 def test_detection_metrics_preserve_undefined_empty_denominators() -> None:

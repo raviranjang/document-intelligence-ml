@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0.0",
+  "name": "synthetic-invoice-ocr",
+  "version": "1.0.0",
+  "created_at": "2026-08-29T00:00:00Z",
+  "description": "Synthetic manifest used only for schema contract tests.",
+  "tasks": [
+    "ocr_detection",
+    "ocr_recognition"
+  ],
+  "sources": [
+    {
+      "name": "synthetic-fixture-generator",
+      "version": "1.0.0",
+      "license": "CC0-1.0"
+    }
+  ],
+  "split_strategy": {
+    "method": "grouped",
+    "grouping_keys": [
+      "template_family"
+    ],
+    "random_seed": 1729,
+    "notes": "Template families are isolated across splits."
+  },
+  "records": [
+    {
+      "id": "synthetic-invoice-0001",
+      "split": "training",
+      "cohorts": [
+        "synthetic",
+        "clean_scan"
+      ],
+      "groups": {
+        "template_family": "synthetic-template-a"
+      },
+      "document": {
+        "uri": "artifacts/synthetic-invoice-0001.png",
+        "sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+        "media_type": "image/png",
+        "size_bytes": 1024
+      },
+      "annotation": {
+        "uri": "annotations/synthetic-invoice-0001.json",
+        "sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+        "media_type": "application/json",
+        "size_bytes": 512
+      }
+    }
+  ]
+}

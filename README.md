@@ -45,6 +45,10 @@ candidates without confidence, normalization, or business acceptance decisions. 
 fields and limitations are documented in
 [`docs/deterministic_extraction_baseline.md`](docs/deterministic_extraction_baseline.md).
 
+Semantic token annotations now use a versioned BIO vocabulary and strict artifact schema. Entity
+definitions, boundary rules, ambiguity handling, OCR-error policy, exclusions, and schema evolution
+are specified in [`docs/annotation_guidelines.md`](docs/annotation_guidelines.md).
+
 ## Development setup
 
 The project requires Python 3.11 and [uv](https://docs.astral.sh/uv/). Dependency versions are

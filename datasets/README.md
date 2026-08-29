@@ -59,3 +59,11 @@ record locations. It checks schema compatibility, duplicate IDs and artifact ref
 split leakage, missing or unreadable files, empty artifacts, byte sizes, SHA-256 checksums, and
 corrupt or empty JSON annotations. Task-specific labels, bounding boxes, and token alignment must
 be checked by validators tied to their versioned annotation schema.
+
+## Semantic entity annotations
+
+Semantic annotations must follow `schemas/entity-annotation.schema.json` and the canonical label
+mapping in `../configs/extraction/semantic_labels_v1.json`. The fixture at
+`fixtures/synthetic-entity-annotation.json` exists only for contract tests and contains no production
+or customer content. Operational geometry, alignment, and BIO checks run before training in the
+task-specific dataset pipeline.

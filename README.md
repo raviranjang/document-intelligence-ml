@@ -49,6 +49,10 @@ Semantic token annotations now use a versioned BIO vocabulary and strict artifac
 definitions, boundary rules, ambiguity handling, OCR-error policy, exclusions, and schema evolution
 are specified in [`docs/annotation_guidelines.md`](docs/annotation_guidelines.md).
 
+The framework-independent LayoutLMv3 dataset pipeline validates semantic annotations, normalizes
+geometry, and aligns BIO labels across tokenizer subwords with explicit truncation behavior. See
+[`docs/layoutlmv3_dataset_pipeline.md`](docs/layoutlmv3_dataset_pipeline.md).
+
 ## Development setup
 
 The project requires Python 3.11 and [uv](https://docs.astral.sh/uv/). Dependency versions are

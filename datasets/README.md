@@ -67,3 +67,7 @@ mapping in `../configs/extraction/semantic_labels_v1.json`. The fixture at
 `fixtures/synthetic-entity-annotation.json` exists only for contract tests and contains no production
 or customer content. Operational geometry, alignment, and BIO checks run before training in the
 task-specific dataset pipeline.
+
+The task-specific loader and LayoutLM feature builder are documented in
+[`../docs/layoutlmv3_dataset_pipeline.md`](../docs/layoutlmv3_dataset_pipeline.md). They aggregate
+annotation failures and never silently discard invalid examples.

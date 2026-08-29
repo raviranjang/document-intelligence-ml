@@ -1,0 +1,1 @@
+"""Lightweight component integration tests."""

@@ -31,6 +31,10 @@ The metric definitions and lineage-aware report contract are documented in
 [`docs/ocr_evaluation.md`](docs/ocr_evaluation.md). No metric values are reported until an immutable,
 approved evaluation dataset is available.
 
+The deterministic error taxonomy, privacy-preserving aggregate report, and fine-tuning decision
+gate are documented in [`docs/ocr_error_analysis.md`](docs/ocr_error_analysis.md). The tooling is
+implemented, but an actual baseline report still requires an approved evaluation dataset.
+
 ## Development setup
 
 The project requires Python 3.11 and [uv](https://docs.astral.sh/uv/). Dependency versions are

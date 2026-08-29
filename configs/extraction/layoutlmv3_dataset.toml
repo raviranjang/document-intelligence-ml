@@ -1,0 +1,6 @@
+schema_version = "1.0.0"
+max_length = 512
+bounding_box_scale = 1000
+ignore_label_id = -100
+subword_label_policy = "propagate_bio"
+truncation_side = "right"

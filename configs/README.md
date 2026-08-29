@@ -15,3 +15,7 @@ parameters. Changing either requires a model-version change and evaluation.
 `extraction/deterministic_baseline.toml` defines traceable lexical field-candidate rules. Patterns and
 rule ordering are versioned extractor behavior. The baseline preserves raw OCR evidence and does not
 perform locale-sensitive normalization or downstream business validation.
+
+`extraction/semantic_labels_v1.json` is the canonical BIO label-to-ID mapping for semantic token
+classification. Released IDs are stable model interfaces; semantic or ordering changes require a new
+label-schema version and corresponding annotation documentation.

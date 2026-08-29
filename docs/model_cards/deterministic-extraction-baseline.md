@@ -33,6 +33,7 @@ available. Synthetic tests are not evidence of production quality.
 
 ## Release gate
 
-Define and approve the versioned entity-label schema, annotate immutable evaluation data, measure
-token/entity precision, recall, F1, and field exact match, review cohort failures, and retain code,
-configuration, OCR, dataset, and report lineage. Downstream business validation remains out of scope.
+Approve annotations against the versioned entity-label schema, create immutable evaluation data,
+measure token/entity precision, recall, F1, and field exact match, review cohort failures, and retain
+code, configuration, OCR, dataset, and report lineage. Downstream business validation remains out of
+scope.

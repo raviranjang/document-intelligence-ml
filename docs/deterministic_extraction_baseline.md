@@ -55,6 +55,8 @@ recall, F1, exact-match, or coverage result for the baseline. Synthetic tests ve
 configuration parsing, matching behavior, provenance, page isolation, and candidate preservation;
 they do not demonstrate production quality.
 
-The next milestone defines the versioned BIO label schema and annotation semantics. Later entity
-evaluation must compare this deterministic baseline and the layout-aware model on identical splits
-and important cohorts, using token/entity precision, recall, F1, and field exact match.
+The versioned BIO label schema and annotation semantics are now defined in
+[`annotation_guidelines.md`](annotation_guidelines.md). The next milestone builds the LayoutLMv3 data
+pipeline against that contract. Later entity evaluation must compare this deterministic baseline and
+the layout-aware model on identical splits and important cohorts, using token/entity precision,
+recall, F1, and field exact match.

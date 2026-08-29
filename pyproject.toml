@@ -14,6 +14,15 @@ classifiers = [
   "Typing :: Typed",
 ]
 
+[project.optional-dependencies]
+ocr = [
+  "paddleocr==3.7.0",
+  "paddlepaddle==3.3.1",
+]
+
+[project.scripts]
+document-intelligence-ocr = "document_intelligence.ocr.cli:main"
+
 [dependency-groups]
 dev = [
   "mypy>=1.15,<2",

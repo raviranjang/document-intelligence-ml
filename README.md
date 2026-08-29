@@ -40,6 +40,11 @@ canonical output contract, and per-class evaluation report. See
 [`docs/classification_baseline.md`](docs/classification_baseline.md). No classifier quality claim is
 made before evaluation on an approved immutable dataset.
 
+The deterministic semantic extraction baseline produces raw, token-traceable invoice field
+candidates without confidence, normalization, or business acceptance decisions. Its supported
+fields and limitations are documented in
+[`docs/deterministic_extraction_baseline.md`](docs/deterministic_extraction_baseline.md).
+
 ## Development setup
 
 The project requires Python 3.11 and [uv](https://docs.astral.sh/uv/). Dependency versions are

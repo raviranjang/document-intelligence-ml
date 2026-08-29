@@ -1,0 +1,26 @@
+schema_version = "1.0.0"
+
+[extractor]
+model_name = "deterministic-invoice-extractor"
+model_version = "1.0.0"
+model_source = "deterministic_rules"
+
+[[rules]]
+rule_id = "invoice_number_label_v1"
+entity_type = "INVOICE_NUMBER"
+pattern = '''\binvoice\s*(?:number|no\.?|#)\s*[:#-]?\s*(?P<value>[A-Z0-9][A-Z0-9./_-]{2,})'''
+
+[[rules]]
+rule_id = "order_reference_label_v1"
+entity_type = "ORDER_REFERENCE"
+pattern = '''\b(?:purchase\s+order(?:\s+(?:number|no\.?|#))?|p\.?o\.?\s*(?:number|no\.?|#)|order\s+(?:reference|ref\.?))\s*[:#-]?\s*(?P<value>[A-Z0-9][A-Z0-9./_-]{2,})'''
+
+[[rules]]
+rule_id = "total_amount_label_v1"
+entity_type = "TOTAL_AMOUNT"
+pattern = '''\b(?:total\s+amount|amount\s+due|grand\s+total)\s*[:#-]?\s*(?P<value>(?:[A-Z]{3}\s*)?[$€£₹]?\s*\d[\d,.]*(?:\s*[A-Z]{3})?)'''
+
+[[rules]]
+rule_id = "invoice_date_numeric_v1"
+entity_type = "INVOICE_DATE"
+pattern = '''\binvoice\s+date\s*[:#-]?\s*(?P<value>\d{1,4}[-/.]\d{1,2}[-/.]\d{1,4})'''

@@ -11,3 +11,7 @@ threshold. Changing any of these values creates a different baseline and require
 `classification/keyword_invoice_baseline.toml` defines the initial deterministic binary document
 classifier. Its signal list and decision threshold are versioned behavior, not trained or calibrated
 parameters. Changing either requires a model-version change and evaluation.
+
+`extraction/deterministic_baseline.toml` defines traceable lexical field-candidate rules. Patterns and
+rule ordering are versioned extractor behavior. The baseline preserves raw OCR evidence and does not
+perform locale-sensitive normalization or downstream business validation.

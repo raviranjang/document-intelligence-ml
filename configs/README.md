@@ -19,3 +19,7 @@ perform locale-sensitive normalization or downstream business validation.
 `extraction/semantic_labels_v1.json` is the canonical BIO label-to-ID mapping for semantic token
 classification. Released IDs are stable model interfaces; semantic or ordering changes require a new
 label-schema version and corresponding annotation documentation.
+
+`extraction/layoutlmv3_dataset.toml` defines shared feature-transform behavior: sequence length,
+LayoutLM coordinate scale, ignored label ID, BIO subword propagation, and right truncation. Training
+and inference adapters must use compatible settings.

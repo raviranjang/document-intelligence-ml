@@ -1,0 +1,20 @@
+[project]
+name = "document-intelligence-ml"
+version = "0.1.0"
+description = "Reproducible document-intelligence model development and evaluation"
+readme = "README.md"
+requires-python = ">=3.11,<3.12"
+dependencies = []
+classifiers = [
+  "Private :: Do Not Upload",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Typing :: Typed",
+]
+
+[build-system]
+requires = ["uv_build>=0.12.7,<0.13"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "document_intelligence"

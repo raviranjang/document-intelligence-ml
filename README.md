@@ -53,6 +53,10 @@ The framework-independent LayoutLMv3 dataset pipeline validates semantic annotat
 geometry, and aligns BIO labels across tokenizer subwords with explicit truncation behavior. See
 [`docs/layoutlmv3_dataset_pipeline.md`](docs/layoutlmv3_dataset_pipeline.md).
 
+BIO entity reconstruction and lineage-aware token, entity, field-exact, and cohort evaluation are
+defined in [`docs/entity_evaluation.md`](docs/entity_evaluation.md). No values are reported until an
+approved immutable entity dataset is available.
+
 ## Development setup
 
 The project requires Python 3.11 and [uv](https://docs.astral.sh/uv/). Dependency versions are

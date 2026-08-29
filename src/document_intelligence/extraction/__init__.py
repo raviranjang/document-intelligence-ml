@@ -6,6 +6,13 @@ from document_intelligence.extraction.config import (
     load_deterministic_extraction_config,
 )
 from document_intelligence.extraction.deterministic import DeterministicExtractor
+from document_intelligence.extraction.labels import (
+    LabelDefinition,
+    LabelPrefix,
+    SemanticLabelSchema,
+    load_semantic_label_schema,
+    validate_bio_sequence,
+)
 from document_intelligence.extraction.types import (
     EntityType,
     ExtractedEntity,
@@ -22,6 +29,11 @@ __all__ = [
     "ExtractionDocument",
     "ExtractionModelMetadata",
     "ExtractionRule",
+    "LabelDefinition",
+    "LabelPrefix",
+    "SemanticLabelSchema",
     "TokenReference",
     "load_deterministic_extraction_config",
+    "load_semantic_label_schema",
+    "validate_bio_sequence",
 ]

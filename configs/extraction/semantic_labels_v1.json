@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "tagging_scheme": "BIO",
+  "labels": [
+    {"id": 0, "name": "O", "prefix": "O", "entity_type": null},
+    {"id": 1, "name": "B-ORDER_REFERENCE", "prefix": "B", "entity_type": "ORDER_REFERENCE"},
+    {"id": 2, "name": "I-ORDER_REFERENCE", "prefix": "I", "entity_type": "ORDER_REFERENCE"},
+    {"id": 3, "name": "B-INVOICE_NUMBER", "prefix": "B", "entity_type": "INVOICE_NUMBER"},
+    {"id": 4, "name": "I-INVOICE_NUMBER", "prefix": "I", "entity_type": "INVOICE_NUMBER"},
+    {"id": 5, "name": "B-SELLER_NAME", "prefix": "B", "entity_type": "SELLER_NAME"},
+    {"id": 6, "name": "I-SELLER_NAME", "prefix": "I", "entity_type": "SELLER_NAME"},
+    {"id": 7, "name": "B-TOTAL_AMOUNT", "prefix": "B", "entity_type": "TOTAL_AMOUNT"},
+    {"id": 8, "name": "I-TOTAL_AMOUNT", "prefix": "I", "entity_type": "TOTAL_AMOUNT"},
+    {"id": 9, "name": "B-INVOICE_DATE", "prefix": "B", "entity_type": "INVOICE_DATE"},
+    {"id": 10, "name": "I-INVOICE_DATE", "prefix": "I", "entity_type": "INVOICE_DATE"}
+  ]
+}

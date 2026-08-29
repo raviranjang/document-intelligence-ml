@@ -86,6 +86,25 @@ class DetectionMetrics:
     iou_threshold: float
 
 
+@dataclass(frozen=True, slots=True)
+class RegionMatch:
+    """One reference/prediction assignment accepted at an IoU threshold."""
+
+    reference_index: int
+    predicted_index: int
+    intersection_over_union: float
+
+
+@dataclass(frozen=True, slots=True)
+class RegionMatching:
+    """Detailed one-to-one region assignments for diagnostics and metrics."""
+
+    matches: tuple[RegionMatch, ...]
+    unmatched_reference_indices: tuple[int, ...]
+    unmatched_predicted_indices: tuple[int, ...]
+    iou_threshold: float
+
+
 def evaluate_recognition(samples: tuple[RecognitionSample, ...]) -> RecognitionMetrics:
     """Compute micro-averaged CER, WER, and exact-match metrics."""
     if not samples:
@@ -140,21 +159,18 @@ def evaluate_detection(
     """Compute detection metrics using maximum-cardinality one-to-one IoU matching."""
     if not samples:
         raise ValueError("detection evaluation requires at least one sample")
-    if isinstance(iou_threshold, bool) or not isinstance(iou_threshold, (int, float)):
-        raise TypeError("iou_threshold must be a real number")
-    canonical_threshold = float(iou_threshold)
-    if not isfinite(canonical_threshold) or not 0.0 < canonical_threshold <= 1.0:
-        raise ValueError("iou_threshold must be finite and in the interval (0, 1]")
+    canonical_threshold = _validate_iou_threshold(iou_threshold)
 
     true_positives = 0
     false_positives = 0
     false_negatives = 0
     for sample in samples:
-        matched_count = _match_regions(
+        matching = match_regions(
             sample.reference_boxes,
             sample.predicted_boxes,
             iou_threshold=canonical_threshold,
         )
+        matched_count = len(matching.matches)
         true_positives += matched_count
         false_positives += len(sample.predicted_boxes) - matched_count
         false_negatives += len(sample.reference_boxes) - matched_count
@@ -206,14 +222,16 @@ def edit_distance(reference: tuple[str, ...], prediction: tuple[str, ...]) -> in
     return previous_row[-1]
 
 
-def _match_regions(
+def match_regions(
     reference_boxes: tuple[BoundingBox, ...],
     predicted_boxes: tuple[BoundingBox, ...],
     *,
-    iou_threshold: float,
-) -> int:
+    iou_threshold: float = 0.5,
+) -> RegionMatching:
+    """Return deterministic maximum-cardinality one-to-one IoU assignments."""
+    canonical_threshold = _validate_iou_threshold(iou_threshold)
     candidate_references = [
-        _candidate_references(reference_boxes, predicted_box, iou_threshold=iou_threshold)
+        _candidate_references(reference_boxes, predicted_box, iou_threshold=canonical_threshold)
         for predicted_box in predicted_boxes
     ]
     matched_prediction_by_reference: dict[int, int] = {}
@@ -229,8 +247,30 @@ def _match_regions(
                 return True
         return False
 
-    return sum(
-        find_match(predicted_index, set()) for predicted_index in range(len(predicted_boxes))
+    for predicted_index in range(len(predicted_boxes)):
+        find_match(predicted_index, set())
+
+    matches = tuple(
+        RegionMatch(
+            reference_index=reference_index,
+            predicted_index=predicted_index,
+            intersection_over_union=intersection_over_union(
+                reference_boxes[reference_index], predicted_boxes[predicted_index]
+            ),
+        )
+        for reference_index, predicted_index in sorted(matched_prediction_by_reference.items())
+    )
+    matched_references = frozenset(match.reference_index for match in matches)
+    matched_predictions = frozenset(match.predicted_index for match in matches)
+    return RegionMatching(
+        matches=matches,
+        unmatched_reference_indices=tuple(
+            index for index in range(len(reference_boxes)) if index not in matched_references
+        ),
+        unmatched_predicted_indices=tuple(
+            index for index in range(len(predicted_boxes)) if index not in matched_predictions
+        ),
+        iou_threshold=canonical_threshold,
     )
 
 
@@ -266,3 +306,12 @@ def _validate_cohorts(cohorts: tuple[str, ...]) -> None:
 
 def _ratio_or_none(numerator: int, denominator: int) -> float | None:
     return numerator / denominator if denominator else None
+
+
+def _validate_iou_threshold(iou_threshold: float) -> float:
+    if isinstance(iou_threshold, bool) or not isinstance(iou_threshold, (int, float)):
+        raise TypeError("iou_threshold must be a real number")
+    canonical_threshold = float(iou_threshold)
+    if not isfinite(canonical_threshold) or not 0.0 < canonical_threshold <= 1.0:
+        raise ValueError("iou_threshold must be finite and in the interval (0, 1]")
+    return canonical_threshold

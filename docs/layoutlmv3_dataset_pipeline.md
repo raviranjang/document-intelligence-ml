@@ -73,3 +73,7 @@ the concrete adapter against these framework-independent contracts. Large images
 outside Git.
 
 No training or quality result is claimed by this pipeline.
+
+The downstream reconstruction and evaluation contract is documented in
+[`entity_evaluation.md`](entity_evaluation.md). Actual LayoutLMv3 training remains deferred until an
+approved immutable semantic dataset is available.

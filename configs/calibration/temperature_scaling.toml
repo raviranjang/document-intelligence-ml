@@ -1,0 +1,6 @@
+schema_version = "1.0.0"
+method = "temperature_scaling"
+minimum_temperature = 0.05
+maximum_temperature = 10.0
+optimization_iterations = 100
+reliability_bin_count = 15

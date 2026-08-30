@@ -62,6 +62,10 @@ cohort reports are documented in
 [`docs/confidence_calibration.md`](docs/confidence_calibration.md). No fitted temperature or quality
 claim is published without approved model logits and separate calibration/evaluation splits.
 
+Atomic, checksum-verified serving bundles and release lineage are documented in
+[`docs/serving_artifact_export.md`](docs/serving_artifact_export.md). Bundle serialization alone does
+not establish model parity or production readiness.
+
 ## Development setup
 
 The project requires Python 3.11 and [uv](https://docs.astral.sh/uv/). Dependency versions are

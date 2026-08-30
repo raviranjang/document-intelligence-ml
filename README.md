@@ -70,6 +70,10 @@ Lifecycle-scoped, framework-independent inference contracts and complete pipelin
 documented in [`docs/inference_adapters.md`](docs/inference_adapters.md). The aggregate output retains
 each model's independent version and remains probabilistic evidence rather than a business decision.
 
+Privacy-conscious inference telemetry and the production monitoring plan are documented in
+[`docs/monitoring.md`](docs/monitoring.md). Alert thresholds and ownership remain deployment-specific
+and must be assigned from measured baselines before production approval.
+
 ## Development setup
 
 The project requires Python 3.11 and [uv](https://docs.astral.sh/uv/). Dependency versions are

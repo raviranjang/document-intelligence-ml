@@ -9,6 +9,10 @@ lifecycle. Construct the pipeline once when a worker or model server starts, the
 prediction. Model loading, tokenizer construction, and rule compilation must not happen inside a
 request handler.
 
+An optional lifecycle-scoped monitoring sink receives privacy-conscious stage records. Document
+identifiers are omitted unless the deployment explicitly opts in; see
+[`monitoring.md`](monitoring.md) for the telemetry contract and operational plan.
+
 For each document, the pipeline:
 
 1. invokes OCR once;

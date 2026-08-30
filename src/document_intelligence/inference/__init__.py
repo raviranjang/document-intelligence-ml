@@ -1,5 +1,12 @@
 """Production-compatible model loading and inference contracts."""
 
+from document_intelligence.common.telemetry import (
+    InferenceStage,
+    MonitoringRecord,
+    MonitoringSink,
+    MonitoringStatus,
+    NoOpMonitoringSink,
+)
 from document_intelligence.inference.contracts import (
     ClassificationInferenceAdapter,
     ExtractionInferenceAdapter,
@@ -12,5 +19,10 @@ __all__ = [
     "DocumentInference",
     "DocumentInferencePipeline",
     "ExtractionInferenceAdapter",
+    "InferenceStage",
+    "MonitoringRecord",
+    "MonitoringSink",
+    "MonitoringStatus",
+    "NoOpMonitoringSink",
     "OCRInferenceAdapter",
 ]

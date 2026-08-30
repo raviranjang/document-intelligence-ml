@@ -74,6 +74,10 @@ Privacy-conscious inference telemetry and the production monitoring plan are doc
 [`docs/monitoring.md`](docs/monitoring.md). Alert thresholds and ownership remain deployment-specific
 and must be assigned from measured baselines before production approval.
 
+Verified production feedback can enter a controlled, metadata-only dataset-candidate and regression
+workflow documented in [`docs/production_feedback.md`](docs/production_feedback.md). Feedback never
+updates model weights directly, and no production-derived regression result is fabricated.
+
 ## Development setup
 
 The project requires Python 3.11 and [uv](https://docs.astral.sh/uv/). Dependency versions are

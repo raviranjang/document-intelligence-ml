@@ -71,3 +71,11 @@ task-specific dataset pipeline.
 The task-specific loader and LayoutLM feature builder are documented in
 [`../docs/layoutlmv3_dataset_pipeline.md`](../docs/layoutlmv3_dataset_pipeline.md). They aggregate
 annotation failures and never silently discard invalid examples.
+
+## Production feedback candidates
+
+Production feedback remains in protected storage and cannot enter a dataset automatically. The
+verification, failure-routing, candidate, immutable-dataset, and regression controls are documented
+in [`../docs/production_feedback.md`](../docs/production_feedback.md). A dataset candidate is not a
+training authorization; accepted artifacts must be incorporated into a new immutable manifest and
+pass the same schema and checksum validation as every other dataset.

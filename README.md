@@ -66,6 +66,10 @@ Atomic, checksum-verified serving bundles and release lineage are documented in
 [`docs/serving_artifact_export.md`](docs/serving_artifact_export.md). Bundle serialization alone does
 not establish model parity or production readiness.
 
+Lifecycle-scoped, framework-independent inference contracts and complete pipeline orchestration are
+documented in [`docs/inference_adapters.md`](docs/inference_adapters.md). The aggregate output retains
+each model's independent version and remains probabilistic evidence rather than a business decision.
+
 ## Development setup
 
 The project requires Python 3.11 and [uv](https://docs.astral.sh/uv/). Dependency versions are

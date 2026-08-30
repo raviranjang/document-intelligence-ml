@@ -23,3 +23,7 @@ label-schema version and corresponding annotation documentation.
 `extraction/layoutlmv3_dataset.toml` defines shared feature-transform behavior: sequence length,
 LayoutLM coordinate scale, ignored label ID, BIO subword propagation, and right truncation. Training
 and inference adapters must use compatible settings.
+
+`calibration/temperature_scaling.toml` defines bounded deterministic temperature fitting and
+reliability-bin behavior. A fitted scalar is an external lineage-bearing artifact; no fitted value is
+stored here without an approved model and calibration dataset.

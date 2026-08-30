@@ -57,6 +57,11 @@ BIO entity reconstruction and lineage-aware token, entity, field-exact, and coho
 defined in [`docs/entity_evaluation.md`](docs/entity_evaluation.md). No values are reported until an
 approved immutable entity dataset is available.
 
+Generic multiclass temperature scaling, calibration artifacts, reliability analysis, and held-out
+cohort reports are documented in
+[`docs/confidence_calibration.md`](docs/confidence_calibration.md). No fitted temperature or quality
+claim is published without approved model logits and separate calibration/evaluation splits.
+
 ## Development setup
 
 The project requires Python 3.11 and [uv](https://docs.astral.sh/uv/). Dependency versions are
